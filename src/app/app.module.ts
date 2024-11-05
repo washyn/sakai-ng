@@ -11,10 +11,23 @@ import { EventService } from './demo/service/event.service';
 import { IconService } from './demo/service/icon.service';
 import { NodeService } from './demo/service/node.service';
 import { PhotoService } from './demo/service/photo.service';
+import {CoreModule} from "@abp/ng.core";
+import {environment} from "../environments/environment";
+import {registerLocale} from "@abp/ng.core/locale";
 
 @NgModule({
-    declarations: [AppComponent, NotfoundComponent],
-    imports: [AppRoutingModule, AppLayoutModule],
+    declarations: [
+        AppComponent,
+        NotfoundComponent,
+    ],
+    imports: [
+        AppRoutingModule,
+        AppLayoutModule,
+        CoreModule.forRoot({
+            environment,
+            registerLocaleFn: registerLocale(),
+        }),
+    ],
     providers: [
         { provide: LocationStrategy, useClass: PathLocationStrategy },
         CountryService, CustomerService, EventService, IconService, NodeService,

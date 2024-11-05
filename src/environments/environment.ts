@@ -2,9 +2,32 @@
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+import { Environment } from '@abp/ng.core';
+
+const baseUrl = 'https://localhost:4200';
+// Improvement: app logo url
 export const environment = {
-  production: false
-};
+    production: false,
+    application: {
+        baseUrl,
+        name: 'BookStore',
+        logoUrl: '',
+    },
+    oAuthConfig: {
+        issuer: 'http://localhost:5000/',
+        redirectUri: baseUrl,
+        clientId: 'BookStore_App',
+        responseType: 'code',
+        scope: 'offline_access BookStore',
+        requireHttps: true,
+    },
+    apis: {
+        default: {
+            url: 'http://localhost:5000',
+            rootNamespace: '',
+        },
+    },
+} as Environment;
 
 /*
  * For easier debugging in development mode, you can import the following file
