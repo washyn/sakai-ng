@@ -5,6 +5,9 @@ import {SampleFormValidationComponent} from "./sample-form-validation.component"
 import {InputTextModule} from "primeng/inputtext";
 import {ButtonModule} from "primeng/button";
 import {ReactiveFormsModule} from "@angular/forms";
+import {NgxValidateCoreModule} from "@ngx-validate/core";
+import {FormValidationModule} from "../../../../shared/form-validation/form-validation.module";
+import {CoreModule} from "@abp/ng.core";
 
 @NgModule({
     imports: [
@@ -15,6 +18,9 @@ import {ReactiveFormsModule} from "@angular/forms";
 
         ButtonModule,
         ReactiveFormsModule,
+        NgxValidateCoreModule,
+        FormValidationModule,
+        CoreModule
     ],
     declarations: [SampleFormValidationComponent]
 })

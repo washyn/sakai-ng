@@ -1,22 +1,22 @@
 <div class="grid">
     <div class="col-12 md:col-6">
         <div class="card p-fluid">
-            <form [formGroup]="formGroup">
+            <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
                 <h5>Vertical</h5>
                 <div class="field">
-                    <label htmlFor="name1">Name</label>
+                    <label htmlFor="name1" class="form-group-custom">Name</label>
                     <input pInputText id="name1" type="text" formControlName="name"/>
                 </div>
                 <div class="field">
-                    <label htmlFor="email1">Email</label>
+                    <label htmlFor="email1" class="form-group-custom">Email</label>
                     <input pInputText id="email1" type="text" formControlName="email" />
                 </div>
                 <div class="field">
-                    <label htmlFor="age1">Age</label>
+                    <label htmlFor="age1" class="form-group-custom">Age</label>
                     <input pInputText id="age1" type="text" formControlName="age" />
                 </div>
 
-                <p-button (onClick)="onSubmit()" label="Enviar"></p-button>
+                <button pButton type="submit" label="Enviar"></button>
             </form>
         </div>
     </div>
