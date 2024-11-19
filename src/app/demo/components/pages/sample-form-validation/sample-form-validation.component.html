@@ -1,19 +1,261 @@
 <div class="grid">
     <div class="col-12 md:col-6">
+        <form
+            class="card p-fluid"
+            [formGroup]="formGroupVertical"
+            (ngSubmit)="formGroupVerticalSubmit()"
+        >
+            <h5>Vertical</h5>
+            <div class="field">
+                <label htmlFor="name1">Name</label>
+                <input
+                    pInputText
+                    formControlName="name"
+                    id="name1"
+                    type="text"
+                />
+            </div>
+            <div class="field">
+                <label htmlFor="email1">Email</label>
+                <input
+                    pInputText
+                    formControlName="email"
+                    id="email1"
+                    type="text"
+                />
+            </div>
+            <div class="field">
+                <label htmlFor="age1">Age</label>
+                <input pInputText formControlName="age" id="age1" type="text" />
+            </div>
+            <button pButton type="submit" label="Enviar"></button>
+        </form>
+
+        <form
+            class="card p-fluid"
+            [formGroup]="formGroupVerticalGrid"
+            (ngSubmit)="formGroupVerticalGridSubmit()"
+        >
+            <h5>Vertical Grid</h5>
+            <div class="p-formgrid grid">
+                <div class="field col">
+                    <label htmlFor="name2">Name</label>
+                    <input
+                        pInputText
+                        formControlName="name"
+                        id="name2"
+                        type="text"
+                    />
+                </div>
+                <div class="field col">
+                    <label htmlFor="email2">Email</label>
+                    <input
+                        pInputText
+                        formControlName="email"
+                        id="email2"
+                        type="text"
+                    />
+                </div>
+            </div>
+            <button pButton type="submit" label="Enviar"></button>
+        </form>
+    </div>
+
+    <div class="col-12 md:col-6">
+        <form
+            class="card p-fluid"
+            [formGroup]="formGroupHorizontal"
+            (ngSubmit)="formGroupHorizontalSubmit()"
+        >
+            <h5>Horizontal</h5>
+            <div class="field grid">
+                <label htmlFor="name3" class="col-12 mb-2 md:col-2 md:mb-0"
+                    >Name</label
+                >
+                <div class="col-12 md:col-10">
+                    <input
+                        pInputText
+                        formControlName="name"
+                        id="name3"
+                        type="text"
+                    />
+                </div>
+            </div>
+            <div class="field grid">
+                <label htmlFor="email3" class="col-12 mb-2 md:col-2 md:mb-0"
+                    >Email</label
+                >
+                <div class="col-12 md:col-10">
+                    <input
+                        pInputText
+                        formControlName="email"
+                        id="email3"
+                        type="text"
+                    />
+                </div>
+            </div>
+            <button pButton type="submit" label="Enviar"></button>
+        </form>
+
+        <!-- TODO: fix this form display error -->
+        <form
+            class="card"
+            [formGroup]="formGroupInline"
+            (ngSubmit)="formGroupInlineSubmit()"
+        >
+            <h5>Inline</h5>
+            <div class="formgroup-inline">
+                <div class="field">
+                    <label htmlFor="firstname1" class="p-sr-only"
+                        >Firstname</label
+                    >
+                    <input
+                        pInputText
+                        formControlName="firstname"
+                        id="firstname1"
+                        type="text"
+                        placeholder="Firstname"
+                    />
+                </div>
+                <div class="field">
+                    <label htmlFor="lastname1" class="p-sr-only"
+                        >Lastname</label
+                    >
+                    <input
+                        formControlName="lastname"
+                        pInputText
+                        id="lastname1"
+                        type="text"
+                        placeholder="Lastname"
+                    />
+                </div>
+                <button pButton label="Submit"></button>
+            </div>
+        </form>
+
+        <form
+            class="card"
+            [formGroup]="formGroupHelpText"
+            (ngSubmit)="formGroupHelpTextSubmit()"
+        >
+            <h5>Help Text</h5>
+            <div class="field p-fluid">
+                <label htmlFor="username">Username</label>
+                <input
+                    pInputText
+                    formControlName="username"
+                    id="username"
+                    type="text"
+                />
+                <small>Enter your username to reset your password.</small>
+            </div>
+            <button pButton type="submit" label="Enviar"></button>
+        </form>
+    </div>
+
+    <div class="col-12">
+        <form
+            class="card"
+            [formGroup]="formGroupAdvanced"
+            (ngSubmit)="formGroupAdvancedSubmit()"
+        >
+            <h5>Advanced</h5>
+            <div class="p-fluid p-formgrid grid">
+                <div class="field col-12 md:col-6">
+                    <label htmlFor="firstname2">Firstname</label>
+                    <input
+                        pInputText
+                        formControlName="firstname"
+                        id="firstname2"
+                        type="text"
+                    />
+                </div>
+                <div class="field col-12 md:col-6">
+                    <label htmlFor="lastname2">Lastname</label>
+                    <input
+                        pInputText
+                        formControlName="lastname"
+                        id="lastname2"
+                        type="text"
+                    />
+                </div>
+                <div class="field col-12">
+                    <label htmlFor="address">Address</label>
+                    <input
+                        pInputTextarea
+                        formControlName="address"
+                        id="address"
+                        rows="4"
+                    />
+                </div>
+                <div class="field col-12 md:col-6">
+                    <label htmlFor="city">City</label>
+                    <input
+                        pInputText
+                        formControlName="city"
+                        id="city"
+                        type="text"
+                    />
+                </div>
+                <div class="field col-12 md:col-3">
+                    <label htmlFor="state">State</label>
+                    <!-- [(ngModel)]="selectedState" -->
+                    <p-dropdown
+                        [options]="dropdownItems"
+                        optionLabel="name"
+                        formControlName="state"
+                    ></p-dropdown>
+                </div>
+                <div class="field col-12 md:col-3">
+                    <label htmlFor="zip">Zip</label>
+                    <input
+                        pInputText
+                        formControlName="zip"
+                        id="zip"
+                        type="text"
+                    />
+                </div>
+            </div>
+            <button pButton type="submit" label="Enviar"></button>
+        </form>
+    </div>
+</div>
+
+<div class="grid">
+    <div class="col-12 md:col-6">
         <div class="card p-fluid">
             <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
                 <h5>Vertical</h5>
                 <div class="field">
-                    <label htmlFor="name1" class="form-group-custom">Name</label>
-                    <input pInputText id="name1" type="text" formControlName="name"/>
+                    <label htmlFor="name1" class="form-group-custom"
+                        >Name</label
+                    >
+                    <input
+                        pInputText
+                        id="name1"
+                        type="text"
+                        formControlName="name"
+                    />
                 </div>
                 <div class="field">
-                    <label htmlFor="email1" class="form-group-custom">Email</label>
-                    <input pInputText id="email1" type="text" formControlName="email" />
+                    <label htmlFor="email1" class="form-group-custom"
+                        >Email</label
+                    >
+                    <input
+                        pInputText
+                        id="email1"
+                        type="text"
+                        formControlName="email"
+                    />
                 </div>
                 <div class="field">
                     <label htmlFor="age1" class="form-group-custom">Age</label>
-                    <input pInputText id="age1" type="text" formControlName="age" />
+                    <input
+                        pInputText
+                        id="age1"
+                        type="text"
+                        formControlName="age"
+                    />
                 </div>
 
                 <button pButton type="submit" label="Enviar"></button>

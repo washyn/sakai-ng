@@ -1,5 +1,9 @@
 import { NgModule } from '@angular/core';
-import { HashLocationStrategy, LocationStrategy, PathLocationStrategy } from '@angular/common';
+import {
+    HashLocationStrategy,
+    LocationStrategy,
+    PathLocationStrategy,
+} from '@angular/common';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppLayoutModule } from './layout/app.layout.module';
@@ -11,18 +15,15 @@ import { EventService } from './demo/service/event.service';
 import { IconService } from './demo/service/icon.service';
 import { NodeService } from './demo/service/node.service';
 import { PhotoService } from './demo/service/photo.service';
-import {CoreModule} from "@abp/ng.core";
-import {environment} from "../environments/environment";
-import {registerLocale} from "@abp/ng.core/locale";
-import {NgxValidateCoreModule} from "@ngx-validate/core";
-import {FormValidationModule} from "./shared/form-validation/form-validation.module";
-import {FormValidationComponent} from "./shared/form-validation/form-validation.component";
+import { CoreModule } from '@abp/ng.core';
+import { environment } from '../environments/environment';
+import { registerLocale } from '@abp/ng.core/locale';
+import { NgxValidateCoreModule } from '@ngx-validate/core';
+import { FormValidationModule } from './shared/form-validation/form-validation.module';
+import { FormValidationComponent } from './shared/form-validation/form-validation.component';
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        NotfoundComponent,
-    ],
+    declarations: [AppComponent, NotfoundComponent],
     imports: [
         AppRoutingModule,
         AppLayoutModule,
@@ -34,20 +35,25 @@ import {FormValidationComponent} from "./shared/form-validation/form-validation.
             // invalidClasses:"",
             validateOnSubmit: true,
             // TODO: check how to work another clases for validation...
-            targetSelector:".form-group-custom",// CRITERIA FOR ADD ELEMENT VALIDATION ???
+            targetSelector: '.form-group-custom', // CRITERIA FOR ADD ELEMENT VALIDATION ???
             // targetSelector:".field",
             // class=""
             errorTemplate: FormValidationComponent,
-            blueprints:{
-                pattern:"Patrón no válido. Por favor, revise su entrada."
-            }
+            blueprints: {
+                pattern: 'Patrón no válido. Por favor, revise su entrada.',
+            },
         }),
-        FormValidationModule
+        FormValidationModule,
     ],
     providers: [
         { provide: LocationStrategy, useClass: PathLocationStrategy },
-        CountryService, CustomerService, EventService, IconService, NodeService,
-        PhotoService, ProductService
+        CountryService,
+        CustomerService,
+        EventService,
+        IconService,
+        NodeService,
+        PhotoService,
+        ProductService,
     ],
     bootstrap: [AppComponent],
 })

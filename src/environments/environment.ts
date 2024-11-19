@@ -14,7 +14,7 @@ export const environment = {
         logoUrl: '',
     },
     oAuthConfig: {
-        issuer: 'http://localhost:5000/',
+        issuer: 'https://localhost:44305/',
         redirectUri: baseUrl,
         clientId: 'BookStore_App',
         responseType: 'code',
@@ -23,7 +23,7 @@ export const environment = {
     },
     apis: {
         default: {
-            url: 'http://localhost:5000',
+            url: 'https://localhost:44305',
             rootNamespace: '',
         },
     },
