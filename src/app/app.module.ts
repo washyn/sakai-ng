@@ -27,6 +27,7 @@ import { FormValidationComponent } from './shared/form-validation/form-validatio
     imports: [
         AppRoutingModule,
         AppLayoutModule,
+
         CoreModule.forRoot({
             environment,
             registerLocaleFn: registerLocale(),
@@ -35,7 +36,7 @@ import { FormValidationComponent } from './shared/form-validation/form-validatio
             // invalidClasses:"",
             validateOnSubmit: true,
             // TODO: check how to work another clases for validation...
-            targetSelector: '.form-group-custom', // CRITERIA FOR ADD ELEMENT VALIDATION ???
+            // targetSelector: '.form-group-custom', // CRITERIA FOR ADD ELEMENT VALIDATION ???
             // targetSelector:".field",
             // class=""
             errorTemplate: FormValidationComponent,
@@ -57,7 +58,9 @@ import { FormValidationComponent } from './shared/form-validation/form-validatio
     ],
     bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule {
+    constructor() {}
+}
 
 // export const BLUEPRINTS = {
 //     email: 'Please enter a valid email address.',

@@ -97,7 +97,8 @@
             <button pButton type="submit" label="Enviar"></button>
         </form>
 
-        <!-- TODO: fix this form display error -->
+        <!-- TODO: fix this form display error validate form group inline -->
+
         <form
             class="card"
             [formGroup]="formGroupInline"
@@ -105,7 +106,7 @@
         >
             <h5>Inline</h5>
             <div class="formgroup-inline">
-                <div class="field">
+                <div class="field form-group-custom">
                     <label htmlFor="firstname1" class="p-sr-only"
                         >Firstname</label
                     >
@@ -117,7 +118,7 @@
                         placeholder="Firstname"
                     />
                 </div>
-                <div class="field">
+                <div class="field form-group-custom">
                     <label htmlFor="lastname1" class="p-sr-only"
                         >Lastname</label
                     >
