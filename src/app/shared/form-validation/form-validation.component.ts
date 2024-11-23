@@ -4,7 +4,7 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import { Validation, ValidationErrorComponent } from '@ngx-validate/core';
-
+// TODO: create cusom validation error component withoud depend of @abp/ng.core
 @Component({
     selector: 'app-form-validation',
     template: `
