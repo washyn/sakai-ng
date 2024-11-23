@@ -1,11 +1,9 @@
-import {NgModule} from "@angular/core";
-import {CoreModule} from "@abp/ng.core";
-import {FormValidationComponent} from "./form-validation.component";
+import { NgModule } from '@angular/core';
+import { FormValidationComponent } from './form-validation.component';
 
 @NgModule({
-    imports: [CoreModule],
+    imports: [],
     exports: [],
     declarations: [FormValidationComponent],
-
 })
 export class FormValidationModule {}

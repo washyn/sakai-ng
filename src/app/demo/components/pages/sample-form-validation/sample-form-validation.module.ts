@@ -7,7 +7,6 @@ import { ButtonModule } from 'primeng/button';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxValidateCoreModule } from '@ngx-validate/core';
 import { FormValidationModule } from '../../../../shared/form-validation/form-validation.module';
-import { CoreModule } from '@abp/ng.core';
 import { AutoCompleteModule } from 'primeng/autocomplete';
 import { CascadeSelectModule } from 'primeng/cascadeselect';
 import { InputTextareaModule } from 'primeng/inputtextarea';
@@ -42,7 +41,6 @@ import { ColorPickerModule } from 'primeng/colorpicker';
         ReactiveFormsModule,
         NgxValidateCoreModule,
         FormValidationModule,
-        CoreModule,
 
         // PrimeNg
         CommonModule,

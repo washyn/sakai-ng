@@ -15,9 +15,6 @@ import { EventService } from './demo/service/event.service';
 import { IconService } from './demo/service/icon.service';
 import { NodeService } from './demo/service/node.service';
 import { PhotoService } from './demo/service/photo.service';
-import { CoreModule } from '@abp/ng.core';
-import { environment } from '../environments/environment';
-import { registerLocale } from '@abp/ng.core/locale';
 import { NgxValidateCoreModule } from '@ngx-validate/core';
 import { FormValidationModule } from './shared/form-validation/form-validation.module';
 import { FormValidationComponent } from './shared/form-validation/form-validation.component';
@@ -27,11 +24,6 @@ import { FormValidationComponent } from './shared/form-validation/form-validatio
     imports: [
         AppRoutingModule,
         AppLayoutModule,
-
-        CoreModule.forRoot({
-            environment,
-            registerLocaleFn: registerLocale(),
-        }),
         NgxValidateCoreModule.forRoot({
             // invalidClasses:"",
             validateOnSubmit: true,
