@@ -79,6 +79,12 @@ export class SampleFormValidationComponent implements OnInit {
     formGroupHelpText: FormGroup;
     formGroupAdvanced: FormGroup;
 
+    formGroupFirstGroup: FormGroup;
+    formGroupSecondGroup: FormGroup;
+    formGroupInputGroup: FormGroup;
+    formGroupSelect: FormGroup;
+    formGroupCheckbox: FormGroup;
+
     buildForms() {
         this.formGroupVertical = this.formBuilder.group({
             name: new FormControl('', Validators.required),
@@ -116,6 +122,48 @@ export class SampleFormValidationComponent implements OnInit {
             state: new FormControl('', Validators.required),
             zip: new FormControl('', Validators.required),
         });
+
+        //
+        this.formGroupFirstGroup = this.formBuilder.group({
+            inputTextDefault: new FormControl('', Validators.required),
+            inputTextDisabled: new FormControl('', Validators.required),
+            inputTextInvalid: new FormControl('', Validators.required),
+            iconsUsername: new FormControl('', Validators.required),
+            iconsSearch: new FormControl('', Validators.required),
+            iconsSearchUsername: new FormControl('', Validators.required),
+
+            floatLabel: new FormControl('', Validators.required),
+            textArea: new FormControl('', Validators.required),
+            autoComplete: new FormControl('', Validators.required),
+            calendar: new FormControl('', Validators.required),
+            inputNumber: new FormControl('', Validators.required),
+            chips: new FormControl('', Validators.required),
+        });
+        this.formGroupSecondGroup = this.formBuilder.group({
+            radioButton: new FormControl('', Validators.required),
+            // checkBox: new FormControl('', Validators.required),
+            // switch: new FormControl('', Validators.required),
+        });
+
+        this.formGroupInputGroup = this.formBuilder.group({
+            userName: new FormControl('', Validators.required),
+            price: new FormControl('', Validators.required),
+            keyword: new FormControl('', Validators.required),
+            other: new FormControl('', Validators.required),
+            check: new FormControl(null, Validators.required),
+        });
+
+        this.formGroupSelect = this.formBuilder.group({
+            listBox: new FormControl(null, Validators.required),
+            dropdown: new FormControl(null, Validators.required),
+            multiSelect: new FormControl(null, Validators.required),
+        });
+
+        this.formGroupCheckbox = this.formBuilder.group({
+            city: new FormControl(null, Validators.required),
+            checkBox: new FormControl([]), // NOTA esto deberia ser 3 form controls
+            switch: new FormControl(false, Validators.required),
+        });
     }
 
     formGroupVerticalSubmit() {}
@@ -124,6 +172,13 @@ export class SampleFormValidationComponent implements OnInit {
     formGroupInlineSubmit() {}
     formGroupHelpTextSubmit() {}
     formGroupAdvancedSubmit() {}
+    formGroupFirstGroupSubmit() {}
+    formGroupSecondGroupSubmit() {}
+    formGroupInputGroupSubmit() {}
+    formGroupSelectSubmit() {}
+    formGroupCheckboxSubmit() {
+        console.log(this.formGroupCheckbox.value);
+    }
 
     // TODO: add another form controls for validation
 
