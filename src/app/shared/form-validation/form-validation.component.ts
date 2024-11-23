@@ -1,8 +1,12 @@
-import {ChangeDetectionStrategy, Component, ViewEncapsulation} from '@angular/core';
-import {Validation, ValidationErrorComponent} from "@ngx-validate/core";
+import {
+    ChangeDetectionStrategy,
+    Component,
+    ViewEncapsulation,
+} from '@angular/core';
+import { Validation, ValidationErrorComponent } from '@ngx-validate/core';
 
 @Component({
-  selector: 'app-form-validation',
+    selector: 'app-form-validation',
     template: `
         @for (error of abpErrors; track $index) {
         <small class="p-error">
@@ -45,8 +49,6 @@ export class FormValidationComponent extends ValidationErrorComponent {
 //     Validation,
 //     ValidationErrorComponent as ErrorComponent,
 // } from '@ngx-validate/core';
-
-
 
 // @Component({
 //     selector: 'abp-validation-error',
