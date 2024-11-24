@@ -33,7 +33,18 @@ import { FormValidationComponent } from './shared/form-validation/form-validatio
             // class=""
             errorTemplate: FormValidationComponent,
             blueprints: {
-                pattern: 'Patrón no válido. Por favor, revise su entrada.',
+                email: 'Por favor, ingrese una dirección de correo electrónico válida.',
+                max: 'El valor máximo debe ser {{ max }}. (Se ingresó {{ actual }})',
+                maxlength:
+                    'Se permiten como máximo {{ requiredLength }} caracteres. (Tiene {{ actualLength }})',
+                min: 'El valor mínimo debe ser {{ min }}. (Se ingresó {{ actual }})',
+                minlength:
+                    'Se requieren como mínimo {{ requiredLength }} caracteres. (Tiene {{ actualLength }})',
+                pattern: 'Patrón inválido. Por favor, revise su entrada.',
+                required: 'Este campo es obligatorio.',
+                passwordMismatch: 'Las contraseñas no coinciden.',
+                invalidPassword:
+                    'La contraseña debe incluir {{ description }}.',
             },
         }),
         FormValidationModule,
