@@ -1,0 +1,629 @@
+<!-- ------------------------------------------------------------- -->
+<!-- textArea
+autoComplete
+calendar
+inputNumber
+chips -->
+<!-- ------------------------------------------------------------- -->
+<div class="grid p-fluid">
+    <div class="col-12 md:col-6">
+        <form
+            class="card"
+            [formGroup]="formGroupFirstGroup"
+            (ngSubmit)="formGroupFirstGroupSubmit()"
+        >
+            <h5>InputText</h5>
+            <div class="grid formgrid">
+                <div class="col-12 mb-2 lg:col-4 lg:mb-0">
+                    <input
+                        type="text"
+                        pInputText
+                        placeholder="Default"
+                        formControlName="inputTextDefault"
+                    />
+                </div>
+                <div class="col-12 mb-2 lg:col-4 lg:mb-0">
+                    <input
+                        type="text"
+                        pInputText
+                        placeholder="Disabled"
+                        [disabled]="true"
+                        formControlName="inputTextDisabled"
+                    />
+                </div>
+                <div class="col-12 mb-2 lg:col-4 lg:mb-0">
+                    <input
+                        type="text"
+                        pInputText
+                        placeholder="Invalid"
+                        class="ng-dirty ng-invalid"
+                        formControlName="inputTextInvalid"
+                    />
+                </div>
+            </div>
+
+            <h5>Icons</h5>
+            <div class="grid formgrid">
+                <div class="col-12 mb-2 lg:col-4 lg:mb-0">
+                    <span class="p-input-icon-left">
+                        <i class="pi pi-user"></i>
+                        <input
+                            type="text"
+                            pInputText
+                            placeholder="Username"
+                            formControlName="iconsUsername"
+                        />
+                    </span>
+                </div>
+                <div class="col-12 mb-2 lg:col-4 lg:mb-0">
+                    <span class="p-input-icon-right">
+                        <input
+                            type="text"
+                            pInputText
+                            placeholder="Search"
+                            formControlName="iconsSearch"
+                        />
+                        <i class="pi pi-search"></i>
+                    </span>
+                </div>
+                <div class="col-12 mb-2 lg:col-4 lg:mb-0">
+                    <span class="p-input-icon-left p-input-icon-right">
+                        <i class="pi pi-user"></i>
+                        <input
+                            type="text"
+                            pInputText
+                            placeholder="Search"
+                            formControlName="iconsSearchUsername"
+                        />
+                        <i class="pi pi-search"></i>
+                    </span>
+                </div>
+            </div>
+
+            <h5>Float Label</h5>
+            <span class="p-float-label">
+                <input
+                    id="float-input"
+                    type="text"
+                    pInputText
+                    formControlName="floatLabel"
+                />
+                <label for="float-input">Username</label>
+            </span>
+
+            <h5>Textarea</h5>
+            <textarea
+                rows="5"
+                cols="30"
+                placeholder="Your Message"
+                pInputTextarea
+                formControlName="textArea"
+            ></textarea>
+
+            <h5>AutoComplete</h5>
+            <p-autoComplete
+                [suggestions]="filteredCountries"
+                (completeMethod)="filterCountry($event)"
+                field="name"
+                [dropdown]="true"
+                formControlName="autoComplete"
+            >
+            </p-autoComplete>
+
+            <h5>Calendar</h5>
+            <p-calendar
+                [showIcon]="true"
+                inputId="icon"
+                formControlName="calendar"
+            ></p-calendar>
+
+            <h5>InputNumber</h5>
+            <p-inputNumber
+                mode="decimal"
+                [showButtons]="true"
+                [min]="0"
+                [max]="100"
+                formControlName="inputNumber"
+            >
+            </p-inputNumber>
+
+            <h5>Chips</h5>
+            <p-chips formControlName="chips"></p-chips>
+            <hr />
+            <button pButton label="Submit"></button>
+        </form>
+
+        <div class="card">
+            <div class="grid">
+                <div class="col-12">
+                    <h5>Slider</h5>
+                    <input
+                        type="text"
+                        pInputText
+                        [(ngModel)]="valSlider"
+                        readonly
+                    />
+                    <p-slider [(ngModel)]="valSlider"></p-slider>
+                </div>
+                <div class="col-12 md:col-6">
+                    <h5>Rating</h5>
+                    <p-rating></p-rating>
+                </div>
+                <div class="col-12 md:col-6">
+                    <h5>ColorPicker</h5>
+                    <p-colorPicker [(ngModel)]="valColor"></p-colorPicker>
+                </div>
+                <div class="col-12">
+                    <h5>Knob</h5>
+                    <p-knob
+                        [(ngModel)]="valueKnob"
+                        valueTemplate="{value}%"
+                        [step]="10"
+                        [min]="-50"
+                        [max]="50"
+                    ></p-knob>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12 md:col-6">
+        <form
+            class="card"
+            [formGroup]="formGroupCheckbox"
+            (ngSubmit)="formGroupCheckboxSubmit()"
+        >
+            <h5>RadioButton</h5>
+            <div class="grid formgrid">
+                <div class="col-12 md:col-4">
+                    <div class="field-radiobutton">
+                        <p-radioButton
+                            name="city"
+                            formControlName="city"
+                            value="Chicago"
+                            id="city1"
+                        ></p-radioButton>
+                        <label for="city1">Chicago</label>
+                    </div>
+                </div>
+                <div class="col-12 md:col-4">
+                    <div class="field-radiobutton">
+                        <p-radioButton
+                            name="city"
+                            formControlName="city"
+                            value="Los Angeles"
+                            id="city2"
+                        ></p-radioButton>
+                        <label for="city2">Los Angeles</label>
+                    </div>
+                </div>
+                <div class="col-12 md:col-4">
+                    <div class="field-radiobutton">
+                        <p-radioButton
+                            name="city"
+                            formControlName="city"
+                            value="New York"
+                            id="city3"
+                        ></p-radioButton>
+                        <label for="city3">New York</label>
+                    </div>
+                </div>
+            </div>
+
+            <h5>Checkbox</h5>
+            <div class="grid formgrid">
+                <div class="col-12 md:col-4">
+                    <div class="field-checkbox">
+                        <p-checkbox
+                            name="group1"
+                            value="New York"
+                            formControlName="checkBox"
+                            id="ny"
+                        ></p-checkbox>
+                        <label for="ny">New York</label>
+                    </div>
+                </div>
+                <div class="col-12 md:col-4">
+                    <div class="field-checkbox">
+                        <p-checkbox
+                            name="group1"
+                            value="San Francisco"
+                            formControlName="checkBox"
+                            id="sf"
+                        ></p-checkbox>
+                        <label for="sf">San Francisco</label>
+                    </div>
+                </div>
+                <div class="col-12 md:col-4">
+                    <div class="field-checkbox">
+                        <p-checkbox
+                            name="group1"
+                            value="Los Angeles"
+                            formControlName="checkBox"
+                            id="la"
+                        ></p-checkbox>
+                        <label for="la">Los Angeles</label>
+                    </div>
+                </div>
+            </div>
+
+            <h5>Input Switch</h5>
+            <p-inputSwitch formControlName="switch"></p-inputSwitch>
+            <hr />
+            <button pButton label="Submit"></button>
+        </form>
+
+        <form
+            class="card"
+            [formGroup]="formGroupSelect"
+            (ngSubmit)="formGroupSelectSubmit()"
+        >
+            <h5>Listbox</h5>
+            <p-listbox
+                [options]="cities"
+                formControlName="listBox"
+                [filter]="true"
+            ></p-listbox>
+
+            <h5>Dropdown</h5>
+            <p-dropdown
+                [options]="cities"
+                formControlName="dropdown"
+                placeholder="Select a City"
+                [showClear]="true"
+            ></p-dropdown>
+
+            <h5>Multiselect</h5>
+            <p-multiSelect
+                [options]="countries"
+                formControlName="multiSelect"
+                placeholder="Select a Country"
+                optionLabel="name"
+                class="multiselect-custom"
+                display="chip"
+            >
+                <ng-template let-country pTemplate="item">
+                    <div class="flex align-items-center">
+                        <img
+                            src="assets/demo/images/flag/flag_placeholder.png"
+                            [class]="'flag flag-' + country.code.toLowerCase()"
+                            style="width: 21px"
+                        />
+                        <span class="ml-2">{{ country.name }}</span>
+                    </div>
+                </ng-template>
+            </p-multiSelect>
+            <hr />
+            <button pButton label="Submit"></button>
+        </form>
+
+        <div class="card">
+            <h5>ToggleButton</h5>
+            <p-toggleButton
+                [(ngModel)]="valToggle"
+                onLabel="Yes"
+                offLabel="No"
+                [style]="{ width: '10em' }"
+            ></p-toggleButton>
+
+            <h5>SelectOneButton</h5>
+            <p-selectButton
+                [options]="paymentOptions"
+                [(ngModel)]="valSelect1"
+                optionLabel="name"
+            ></p-selectButton>
+
+            <h5>SelectManyButton</h5>
+            <p-selectButton
+                [options]="paymentOptions"
+                [(ngModel)]="valSelect2"
+                [multiple]="true"
+                optionLabel="name"
+            ></p-selectButton>
+            <hr />
+            <button pButton label="Submit"></button>
+        </div>
+    </div>
+
+    <div class="col-12">
+        <form
+            class="card"
+            [formGroup]="formGroupInputGroup"
+            (ngSubmit)="formGroupInputGroupSubmit()"
+        >
+            <h5>InputGroup</h5>
+            <div class="grid">
+                <div class="col-12 md:col-6">
+                    <p-inputGroup>
+                        <p-inputGroupAddon>
+                            <i class="pi pi-user"></i>
+                        </p-inputGroupAddon>
+                        <input
+                            pInputText
+                            type="text"
+                            placeholder="Username"
+                            formControlName="userName"
+                        />
+                    </p-inputGroup>
+                </div>
+                <div class="col-12 md:col-6">
+                    <p-inputGroup class="w-full">
+                        <p-inputGroupAddon>
+                            <i class="pi pi-tags" style="line-height: 1.25"></i>
+                        </p-inputGroupAddon>
+
+                        <p-inputGroupAddon>
+                            <i
+                                class="pi pi-shopping-cart"
+                                style="line-height: 1.25"
+                            ></i>
+                        </p-inputGroupAddon>
+
+                        <input
+                            type="text"
+                            pInputText
+                            placeholder="Price"
+                            formControlName="price"
+                        />
+                        <p-inputGroupAddon>$</p-inputGroupAddon>
+                        <p-inputGroupAddon>.00</p-inputGroupAddon>
+                    </p-inputGroup>
+                </div>
+                <div class="col-12 md:col-6">
+                    <p-inputGroup>
+                        <button type="button" pButton label="Search"></button>
+                        <input
+                            type="text"
+                            pInputText
+                            placeholder="Keyword"
+                            formControlName="keyword"
+                        />
+                    </p-inputGroup>
+                </div>
+                <div class="col-12 md:col-6">
+                    <p-inputGroup>
+                        <p-inputGroupAddon
+                            ><p-checkbox
+                                formControlName="check"
+                                [binary]="true"
+                            ></p-checkbox
+                        ></p-inputGroupAddon>
+                        <input
+                            type="text"
+                            pInputText
+                            placeholder="Username"
+                            formControlName="other"
+                        />
+                    </p-inputGroup>
+                </div>
+            </div>
+            <hr />
+            <button pButton label="Submit"></button>
+        </form>
+    </div>
+</div>
+<!-- ------------------------------------------------------------------------------------------------------- -->
+
+<div class="grid">
+    <div class="col-12 md:col-6">
+        <form
+            class="card p-fluid"
+            [formGroup]="formGroupVertical"
+            (ngSubmit)="formGroupVerticalSubmit()"
+        >
+            <h5>Vertical</h5>
+            <div class="field">
+                <label htmlFor="name1">Name</label>
+                <input
+                    pInputText
+                    formControlName="name"
+                    id="name1"
+                    type="text"
+                />
+            </div>
+            <div class="field">
+                <label htmlFor="email1">Email</label>
+                <input
+                    pInputText
+                    formControlName="email"
+                    id="email1"
+                    type="text"
+                />
+            </div>
+            <div class="field">
+                <label htmlFor="age1">Age</label>
+                <input pInputText formControlName="age" id="age1" type="text" />
+            </div>
+            <button pButton type="submit" label="Enviar"></button>
+        </form>
+
+        <form
+            class="card p-fluid"
+            [formGroup]="formGroupVerticalGrid"
+            (ngSubmit)="formGroupVerticalGridSubmit()"
+        >
+            <h5>Vertical Grid</h5>
+            <div class="p-formgrid grid">
+                <div class="field col">
+                    <label htmlFor="name2">Name</label>
+                    <input
+                        pInputText
+                        formControlName="name"
+                        id="name2"
+                        type="text"
+                    />
+                </div>
+                <div class="field col">
+                    <label htmlFor="email2">Email</label>
+                    <input
+                        pInputText
+                        formControlName="email"
+                        id="email2"
+                        type="text"
+                    />
+                </div>
+            </div>
+            <button pButton type="submit" label="Enviar"></button>
+        </form>
+    </div>
+
+    <div class="col-12 md:col-6">
+        <form
+            class="card p-fluid"
+            [formGroup]="formGroupHorizontal"
+            (ngSubmit)="formGroupHorizontalSubmit()"
+        >
+            <h5>Horizontal</h5>
+            <div class="field grid">
+                <label htmlFor="name3" class="col-12 mb-2 md:col-2 md:mb-0"
+                    >Name</label
+                >
+                <div class="col-12 md:col-10">
+                    <input
+                        pInputText
+                        formControlName="name"
+                        id="name3"
+                        type="text"
+                    />
+                </div>
+            </div>
+            <div class="field grid">
+                <label htmlFor="email3" class="col-12 mb-2 md:col-2 md:mb-0"
+                    >Email</label
+                >
+                <div class="col-12 md:col-10">
+                    <input
+                        pInputText
+                        formControlName="email"
+                        id="email3"
+                        type="text"
+                    />
+                </div>
+            </div>
+            <button pButton type="submit" label="Enviar"></button>
+        </form>
+
+        <!-- TODO: fix this form display error validate form group inline -->
+
+        <form
+            class="card"
+            [formGroup]="formGroupInline"
+            (ngSubmit)="formGroupInlineSubmit()"
+        >
+            <h5>Inline</h5>
+            <div class="formgroup-inline">
+                <div class="field form-group-custom">
+                    <label htmlFor="firstname1" class="p-sr-only"
+                        >Firstname</label
+                    >
+                    <input
+                        pInputText
+                        formControlName="firstname"
+                        id="firstname1"
+                        type="text"
+                        placeholder="Firstname"
+                    />
+                </div>
+                <div class="field form-group-custom">
+                    <label htmlFor="lastname1" class="p-sr-only"
+                        >Lastname</label
+                    >
+                    <input
+                        formControlName="lastname"
+                        pInputText
+                        id="lastname1"
+                        type="text"
+                        placeholder="Lastname"
+                    />
+                </div>
+                <button pButton label="Submit"></button>
+            </div>
+        </form>
+
+        <form
+            class="card"
+            [formGroup]="formGroupHelpText"
+            (ngSubmit)="formGroupHelpTextSubmit()"
+        >
+            <h5>Help Text</h5>
+            <div class="field p-fluid">
+                <label htmlFor="username">Username</label>
+                <input
+                    pInputText
+                    formControlName="username"
+                    id="username"
+                    type="text"
+                />
+                <small>Enter your username to reset your password.</small>
+            </div>
+            <button pButton type="submit" label="Enviar"></button>
+        </form>
+    </div>
+
+    <div class="col-12">
+        <form
+            class="card"
+            [formGroup]="formGroupAdvanced"
+            (ngSubmit)="formGroupAdvancedSubmit()"
+        >
+            <h5>Advanced</h5>
+            <div class="p-fluid p-formgrid grid">
+                <div class="field col-12 md:col-6">
+                    <label htmlFor="firstname2">Firstname</label>
+                    <input
+                        pInputText
+                        formControlName="firstname"
+                        id="firstname2"
+                        type="text"
+                    />
+                </div>
+                <div class="field col-12 md:col-6">
+                    <label htmlFor="lastname2">Lastname</label>
+                    <input
+                        pInputText
+                        formControlName="lastname"
+                        id="lastname2"
+                        type="text"
+                    />
+                </div>
+                <div class="field col-12">
+                    <label htmlFor="address">Address</label>
+                    <input
+                        pInputTextarea
+                        formControlName="address"
+                        id="address"
+                        rows="4"
+                    />
+                </div>
+                <div class="field col-12 md:col-6">
+                    <label htmlFor="city">City</label>
+                    <input
+                        pInputText
+                        formControlName="city"
+                        id="city"
+                        type="text"
+                    />
+                </div>
+                <div class="field col-12 md:col-3">
+                    <label htmlFor="state">State</label>
+                    <!-- [(ngModel)]="selectedState" -->
+                    <p-dropdown
+                        [options]="dropdownItems"
+                        optionLabel="name"
+                        formControlName="state"
+                    ></p-dropdown>
+                </div>
+                <div class="field col-12 md:col-3">
+                    <label htmlFor="zip">Zip</label>
+                    <input
+                        pInputText
+                        formControlName="zip"
+                        id="zip"
+                        type="text"
+                    />
+                </div>
+            </div>
+            <button pButton type="submit" label="Enviar"></button>
+        </form>
+    </div>
+</div>

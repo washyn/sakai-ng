@@ -105,6 +105,11 @@ export class AppMenuComponent implements OnInit {
                         icon: 'pi pi-fw pi-circle-off',
                         routerLink: ['/pages/empty']
                     },
+                    {
+                        label: 'Sample form validation...',
+                        icon: 'pi pi-fw pi-circle-off',
+                        routerLink: ['/pages/sample-form-validation']
+                    },
                 ]
             },
             {
