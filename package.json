@@ -11,6 +11,7 @@
     },
     "private": true,
     "dependencies": {
+        "@abp/ng.core": "^10.0.3",
         "@angular/animations": "^20",
         "@angular/common": "^20",
         "@angular/compiler": "^20",
@@ -19,6 +20,7 @@
         "@angular/platform-browser": "^20",
         "@angular/platform-browser-dynamic": "^20",
         "@angular/router": "^20",
+        "@ngx-validate/core": "^0.2.0",
         "@primeuix/themes": "^1.2.1",
         "@tailwindcss/postcss": "^4.1.11",
         "chart.js": "4.4.2",
@@ -31,6 +33,7 @@
         "zone.js": "~0.15.1"
     },
     "devDependencies": {
+        "@abp/ng.schematics": "^10.0.3",
         "@angular-devkit/build-angular": "^20",
         "@angular/cli": "^20",
         "@angular/compiler-cli": "^20",
