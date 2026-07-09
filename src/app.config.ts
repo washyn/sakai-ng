@@ -30,3 +30,5 @@ export const appConfig: ApplicationConfig = {
         }
     ]
 };
+// TODO: add custm providers for common abp services
+// notify, message and spinner
