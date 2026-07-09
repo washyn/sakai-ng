@@ -140,6 +140,11 @@ export class AppMenu {
                 label: 'Get Started',
                 items: [
                     {
+                        label: 'ABP Shared Example',
+                        icon: 'pi pi-fw pi-sparkles',
+                        routerLink: ['/abp-shared-example']
+                    },
+                    {
                         label: 'Documentation',
                         icon: 'pi pi-fw pi-book',
                         routerLink: ['/documentation']

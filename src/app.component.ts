@@ -1,10 +1,14 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { LoaderBarComponent } from '@/abp-shared';
 
 @Component({
     selector: 'app-root',
     standalone: true,
-    imports: [RouterModule],
-    template: `<router-outlet></router-outlet>`
+    imports: [RouterModule, LoaderBarComponent],
+    template: `
+        <abp-loader-bar />
+        <router-outlet></router-outlet>
+    `
 })
-export class AppComponent {}
+export class AppComponent { }
