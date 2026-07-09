@@ -36,7 +36,7 @@ export const appConfig: ApplicationConfig = {
             uiService: XSpinnerUIService,
             // cehck layout form or crud page as example form
             // validationTargetSelector: '.flex.flex-col.gap-2',// customizar selector de validación wraper
-            validationTargetSelector: null,// en abp usa form-group que no existe, y en el oficial tambien, pero tambien en el repo se pone como nulo
+            validationTargetSelector: null,// en abp usa form-group que no existe, y en el oficial tambien, pero tambien en el repo se pone como nulo para test
             validationErrorComponent: PrimeValidationErrorComponent,
         }),
         MessageService,
