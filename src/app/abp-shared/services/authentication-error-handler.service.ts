@@ -15,8 +15,9 @@ export class AbpAuthenticationErrorHandler implements CustomHttpErrorHandlerServ
   }
 
   execute() {
+    console.log('AbpAuthenticationErrorHandler');
     this.configStateService.refreshAppState().subscribe(({ currentUser }) => {
-      if (!currentUser?.isAuthenticated) {
+      if (!currentUser.isAuthenticated) {
         this.authService.logout({ noRedirectToLogoutUrl: true });
       }
     });

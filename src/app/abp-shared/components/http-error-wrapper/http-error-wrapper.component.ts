@@ -18,7 +18,7 @@ import { DOCUMENT } from '@angular/common';
 import { Router } from '@angular/router';
 import { fromEvent, Subject } from 'rxjs';
 import { debounceTime, filter } from 'rxjs/operators';
-import {LocalizationParam, LocalizationPipe} from '@abp/ng.core';
+import { LocalizationParam, LocalizationPipe } from '@abp/ng.core';
 import { ErrorScreenErrorCodes } from '../../models';
 
 @Component({
@@ -64,7 +64,7 @@ export class HttpErrorWrapperComponent implements OnInit, AfterViewInit, OnDestr
   }
 
   ngOnInit(): void {
-    const computedStyle = this.window?.getComputedStyle?.(this.document.body);
+    const computedStyle = this.window.getComputedStyle(this.document.body);
     const backgroundColor = computedStyle?.getPropertyValue('background-color');
     this.backgroundColor = backgroundColor || '#fff';
   }

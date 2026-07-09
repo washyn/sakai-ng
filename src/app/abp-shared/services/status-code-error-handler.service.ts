@@ -1,10 +1,9 @@
-import { Confirmation, CustomHttpErrorHandlerService, ErrorScreenErrorCodes } from '../models';
+import { Confirmation, CustomHttpErrorHandlerService } from '../models';
 import {
   CUSTOM_HTTP_ERROR_HANDLER_PRIORITY,
   DEFAULT_ERROR_LOCALIZATIONS,
   DEFAULT_ERROR_MESSAGES,
 } from '../constants/default-errors';
-import { HttpErrorResponse } from '@angular/common/http';
 import { AuthService, LocalizationParam, LocalizationService } from '@abp/ng.core';
 import { Observable, of } from 'rxjs';
 import { inject, Injectable } from '@angular/core';
@@ -21,7 +20,7 @@ export class StatusCodeErrorHandlerService implements CustomHttpErrorHandlerServ
   protected readonly localizationService = inject(LocalizationService);
 
   protected readonly handledStatusCodes = [401, 403, 404, 500] as const;
-  protected status: ErrorScreenErrorCodes = 0;
+  protected status: (typeof this.handledStatusCodes)[number];
 
   readonly priority = CUSTOM_HTTP_ERROR_HANDLER_PRIORITY.normal;
 
@@ -48,45 +47,35 @@ export class StatusCodeErrorHandlerService implements CustomHttpErrorHandlerServ
   }
 
   protected showPage(): void {
-    const key =
-      this.status !== 0
-        ? (`defaultError${this.status}` as keyof typeof DEFAULT_ERROR_LOCALIZATIONS)
-        : 'defaultError';
+    const key = `defaultError${this.status}`;
     const shouldRemoveDetail = [401, 404].indexOf(this.status) > -1;
-    const instance: {
-      title: { key: string; defaultValue: string };
-      details?: { key: string; defaultValue: string };
-      status: ErrorScreenErrorCodes;
-    } = {
+    const instance = {
       title: {
         key: DEFAULT_ERROR_LOCALIZATIONS[key]?.title,
         defaultValue: DEFAULT_ERROR_MESSAGES[key]?.title,
       },
+      details: {
+        key: DEFAULT_ERROR_LOCALIZATIONS[key]?.details,
+        defaultValue: DEFAULT_ERROR_MESSAGES[key]?.details,
+      },
       status: this.status,
     };
 
-    if (!shouldRemoveDetail) {
-      instance.details = {
-        key: DEFAULT_ERROR_LOCALIZATIONS[key]?.details,
-        defaultValue: DEFAULT_ERROR_MESSAGES[key]?.details,
-      };
+    if (shouldRemoveDetail) {
+      delete instance.details;
     }
 
     this.createErrorComponentService.execute(instance);
   }
 
-  canHandle(error: unknown): boolean {
-    const status =
-      error instanceof HttpErrorResponse
-        ? error.status
-        : (error as { status?: number } | null)?.status;
-
-    this.status = (status ?? 0) as ErrorScreenErrorCodes;
-    return (this.handledStatusCodes as readonly number[]).includes(this.status);
+  canHandle(error): boolean {
+    this.status = error?.status || 0;
+    return this.handledStatusCodes.indexOf(this.status) > -1;
   }
 
   execute(): void {
-    const key = `defaultError${this.status}` as keyof typeof DEFAULT_ERROR_LOCALIZATIONS;
+    console.log('StatusCodeErrorHandlerService');
+    const key = `defaultError${this.status}`;
     const title = {
       key: DEFAULT_ERROR_LOCALIZATIONS[key]?.title,
       defaultValue: DEFAULT_ERROR_MESSAGES[key]?.title,
@@ -111,7 +100,7 @@ export class StatusCodeErrorHandlerService implements CustomHttpErrorHandlerServ
           break;
         }
 
-        this.showConfirmation(message, title).subscribe();
+        this.showConfirmation(title, message).subscribe();
         break;
       case 403:
       case 500:
