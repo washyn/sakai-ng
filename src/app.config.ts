@@ -1,4 +1,4 @@
-import { provideHttpClient, withFetch } from '@angular/common/http';
+import { provideHttpClient, withFetch, withInterceptorsFromDi } from '@angular/common/http';
 import { ApplicationConfig } from '@angular/core';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideRouter, withEnabledBlockingInitialNavigation, withInMemoryScrolling } from '@angular/router';
@@ -9,11 +9,12 @@ import { AuthService, provideAbpCore, withOptions } from '@abp/ng.core';
 import { CustomAuthService } from './service/custom-auth-service';
 import { registerLocaleForEsBuild } from '@abp/ng.core/locale';
 import { environment } from './environments/environment';
+import { provideAbpSharedUtilities } from '@/abp-shared';
 
 export const appConfig: ApplicationConfig = {
     providers: [
         provideRouter(appRoutes, withInMemoryScrolling({ anchorScrolling: 'enabled', scrollPositionRestoration: 'enabled' }), withEnabledBlockingInitialNavigation()),
-        provideHttpClient(withFetch()),
+        provideHttpClient(withFetch(), withInterceptorsFromDi()),
         provideAnimationsAsync(),
         providePrimeNG({ theme: { preset: Aura, options: { darkModeSelector: '.app-dark' } } }),
         provideAbpCore(
@@ -22,6 +23,7 @@ export const appConfig: ApplicationConfig = {
                 registerLocaleFn: registerLocaleForEsBuild()
             })
         ),
+        provideAbpSharedUtilities(),
         {
             provide: AuthService,
             useClass: CustomAuthService
