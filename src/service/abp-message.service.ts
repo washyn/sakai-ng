@@ -1,5 +1,5 @@
 import { IMessageService } from '@/abp-shared';
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { ConfirmationService } from 'primeng/api';
 
 // IMPROVEMENT: add suscribable obj when close message dialog.
@@ -7,7 +7,7 @@ import { ConfirmationService } from 'primeng/api';
   providedIn: 'root',
 })
 export class AbpMessageService implements IMessageService {
-  constructor(private confirmationService: ConfirmationService) { }
+  public confirmationService = inject(ConfirmationService);
 
   private showMessage(type: string, message: string, title?: string, options?: any) {
     if (!title) {
@@ -47,6 +47,7 @@ export class AbpMessageService implements IMessageService {
     this.showMessage('', message, title, options);
   }
 
+  // TODO: fix confirm message, when show previus message is not working confirmationService.confirm disply ok
   confirm(
     message: string,
     title?: string,
