@@ -29,8 +29,10 @@ export class AbpSharedExampleComponent implements OnInit {
 
         this.formExample = this.formBuilder.group<{
             filter: FormControl<string | null>;
+            name: FormControl<string | null>;
         }>({
-            filter: new FormControl<string>('', [Validators.required, Validators.maxLength(10), AbpValidators.emailAddress()])
+            filter: new FormControl<string>('', [Validators.required, Validators.maxLength(10), AbpValidators.emailAddress()]),
+            name: new FormControl<string>('', [Validators.required])
         });
     }
 

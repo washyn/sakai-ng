@@ -15,6 +15,7 @@ import { XSpinnerUIService } from './service/xspinner-ui.service';
 import { registerLocaleForEsBuild } from '@abp/ng.core/locale';
 import { environment } from './environments/environment';
 import { provideAbpSharedUtilities } from '@/abp-shared';
+import { PrimeValidationErrorComponent } from './service/prime-validation-component';
 
 export const appConfig: ApplicationConfig = {
     providers: [
@@ -32,7 +33,10 @@ export const appConfig: ApplicationConfig = {
         provideAbpSharedUtilities({
             notifyService: AbpNotifyService,
             messageService: AbpMessageService,
-            uiService: XSpinnerUIService
+            uiService: XSpinnerUIService,
+            // cehck layout form or crud page as example form
+            validationTargetSelector: '.flex.flex-col.gap-2',// customizar selector de validación wraper
+            validationErrorComponent: PrimeValidationErrorComponent,
         }),
         MessageService,
         ConfirmationService,

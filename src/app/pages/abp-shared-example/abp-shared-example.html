@@ -1,75 +1,91 @@
-<div class="grid">
-    <div class="col-12">
-        <div class="card">
-            <h2 class="mt-0">ABP Shared Example</h2>
-            <p class="text-color-secondary">
-                Ejemplo adaptado desde <code>coreapp</code> para probar utilidades de <code>abp-shared</code> dentro de <code>primeapp</code>.
-            </p>
+<div class="card">
+    <div class="font-semibold text-xl mb-4">Empty Page</div>
+    <div class="">
+        <h2 class="mt-0">ABP Shared Example</h2>
+        <p class="text-color-secondary">
+            Ejemplo adaptado desde <code>coreapp</code> para probar utilidades de <code>abp-shared</code> dentro de
+            <code>primeapp</code>.
+        </p>
 
-            <app-lang-component />
+        <app-lang-component />
 
-            <hr class="my-4" />
+        <hr class="my-4" />
 
-            <form [formGroup]="formExample" (ngSubmit)="save()">
-                <div class="field">
-                    <label for="testValue">TestValue *</label>
-                    <input id="testValue" type="text" pInputText name="testValue" formControlName="filter" />
-                </div>
-                <button pButton type="submit" label="Save"></button>
-            </form>
-
-            <hr class="my-4" />
-
-            <div class="flex flex-wrap gap-2">
-                <button pButton type="button" severity="info" label="Notify info" (click)="util.notify.info('info', 'title')"></button>
-                <button pButton type="button" severity="success" label="Notify success" (click)="util.notify.success('success', 'title')"></button>
-                <button pButton type="button" severity="warn" label="Notify warn" (click)="util.notify.warn('warn', 'title')"></button>
-                <button pButton type="button" severity="danger" label="Notify error" (click)="util.notify.error('error', 'title')"></button>
+        <!-- check: crud layout modal form
+            check: form layout -->
+        <form class="flex flex-col gap-4" [formGroup]="formExample" (ngSubmit)="save()">
+            <div class="flex flex-col gap-2">
+                <label class="text-surface-900 dark:text-surface-0 text-xl font-medium">Name</label>
+                <input pInputText type="text" placeholder="Find By Name" formControlName="filter" />
             </div>
-
-            <hr class="my-4" />
-
-            <div class="flex flex-wrap gap-2">
-                <button pButton type="button" severity="info" label="Message info" (click)="util.message.info('info', 'title')"></button>
-                <button pButton type="button" severity="success" label="Message success" (click)="util.message.success('success', 'title')"></button>
-                <button pButton type="button" severity="warn" label="Message warn" (click)="util.message.warn('warn', 'title')"></button>
-                <button pButton type="button" severity="danger" label="Message error" (click)="util.message.error('error', 'title')"></button>
-                <button pButton type="button" label="Confirm message" (click)="confirmExample()"></button>
+            <div class="flex flex-col gap-2">
+                <label class="text-surface-900 dark:text-surface-0 text-xl font-medium">Name</label>
+                <input pInputText type="text" placeholder="Find address" formControlName="name" />
             </div>
+            <p-button label="Sign In" styleClass="w-full" type="submit" label="Save"></p-button>
+        </form>
 
-            <hr class="my-4" />
+        <hr class="my-4" />
 
-            <div class="flex flex-wrap gap-2">
-                <button pButton type="button" label="Block" (click)="util.ui.block()"></button>
-                <button pButton type="button" label="Unblock" (click)="util.ui.unblock()"></button>
-                <button pButton type="button" label="Set busy" (click)="util.ui.setBusy()"></button>
-                <button pButton type="button" label="Clear busy" (click)="util.ui.clearBusy()"></button>
-            </div>
-
-            <hr class="my-4" />
-
-            <div class="flex flex-wrap gap-2">
-                <button pButton type="button" severity="danger" label="Error 500" (click)="error500()"></button>
-                <button pButton type="button" severity="danger" label="Error 401" (click)="error401()"></button>
-                <button pButton type="button" severity="danger" label="Error 403" (click)="error403()"></button>
-                <button pButton type="button" severity="danger" label="Error 40XXX" (click)="error40XXX()"></button>
-                <button pButton type="button" severity="danger" label="Error 404" (click)="error404()"></button>
-                <button pButton type="button" severity="danger" label="Business Exception" (click)="errorBusinessException()"></button>
-            </div>
-
-            <hr class="my-4" />
-
-            <div class="flex flex-wrap gap-2">
-                <button pButton type="button" label="Large Request" (click)="largeRequest()"></button>
-                <button pButton type="button" label="Req with spinner custom" (click)="largeRequestSecondExample()"></button>
-                <button pButton type="button" label="Require Auth" (click)="requireAuth()"></button>
-                <button pButton type="button" label="Error 400" (click)="error400()"></button>
-                <button pButton type="button" label="Error 501" (click)="error501()"></button>
-            </div>
-
-            <hr class="my-4" />
-
-            <pre>{{ appConfig | json }}</pre>
+        <div class="flex flex-wrap gap-2">
+            <button pButton type="button" severity="info" label="Notify info"
+                (click)="util.notify.info('info', 'title')"></button>
+            <button pButton type="button" severity="success" label="Notify success"
+                (click)="util.notify.success('success', 'title')"></button>
+            <button pButton type="button" severity="warn" label="Notify warn"
+                (click)="util.notify.warn('warn', 'title')"></button>
+            <button pButton type="button" severity="danger" label="Notify error"
+                (click)="util.notify.error('error', 'title')"></button>
         </div>
+
+        <hr class="my-4" />
+
+        <div class="flex flex-wrap gap-2">
+            <button pButton type="button" severity="info" label="Message info"
+                (click)="util.message.info('info', 'title')"></button>
+            <button pButton type="button" severity="success" label="Message success"
+                (click)="util.message.success('success', 'title')"></button>
+            <button pButton type="button" severity="warn" label="Message warn"
+                (click)="util.message.warn('warn', 'title')"></button>
+            <button pButton type="button" severity="danger" label="Message error"
+                (click)="util.message.error('error', 'title')"></button>
+            <button pButton type="button" label="Confirm message" (click)="confirmExample()"></button>
+        </div>
+
+        <hr class="my-4" />
+
+        <div class="flex flex-wrap gap-2">
+            <button pButton type="button" label="Block" (click)="util.ui.block()"></button>
+            <button pButton type="button" label="Unblock" (click)="util.ui.unblock()"></button>
+            <button pButton type="button" label="Set busy" (click)="util.ui.setBusy()"></button>
+            <button pButton type="button" label="Clear busy" (click)="util.ui.clearBusy()"></button>
+        </div>
+
+        <hr class="my-4" />
+
+        <div class="flex flex-wrap gap-2">
+            <button pButton type="button" severity="danger" label="Error 500" (click)="error500()"></button>
+            <button pButton type="button" severity="danger" label="Error 401" (click)="error401()"></button>
+            <button pButton type="button" severity="danger" label="Error 403" (click)="error403()"></button>
+            <button pButton type="button" severity="danger" label="Error 40XXX" (click)="error40XXX()"></button>
+            <button pButton type="button" severity="danger" label="Error 404" (click)="error404()"></button>
+            <button pButton type="button" severity="danger" label="Business Exception"
+                (click)="errorBusinessException()"></button>
+        </div>
+
+        <hr class="my-4" />
+
+        <div class="flex flex-wrap gap-2">
+            <button pButton type="button" label="Large Request" (click)="largeRequest()"></button>
+            <button pButton type="button" label="Req with spinner custom"
+                (click)="largeRequestSecondExample()"></button>
+            <button pButton type="button" label="Require Auth" (click)="requireAuth()"></button>
+            <button pButton type="button" label="Error 400" (click)="error400()"></button>
+            <button pButton type="button" label="Error 501" (click)="error501()"></button>
+        </div>
+
+        <hr class="my-4" />
+
+        <pre>{{ appConfig.currentUser| json }}</pre>
     </div>
 </div>
