@@ -19,12 +19,21 @@ import { DEFAULT_VALIDATION_BLUEPRINTS } from './constants';
 import { ErrorHandler } from './handlers';
 import { HttpErrorConfig } from './models';
 import { DEFAULT_HANDLERS_PROVIDERS } from './providers';
-import { OAuthApiInterceptor, provideAbpUtils } from './core';
+import {
+  IMessageService,
+  INotifyService,
+  IUIService,
+  OAuthApiInterceptor,
+  provideAbpUtils,
+} from './core';
 import { CustomValidationErrorComponent } from './shared';
 import { HTTP_ERROR_CONFIG } from './tokens';
 
 export interface AbpSharedUtilitiesOptions {
   httpErrorConfig?: HttpErrorConfig;
+  notifyService?: Type<INotifyService>;
+  messageService?: Type<IMessageService>;
+  uiService?: Type<IUIService>;
   validationBluePrints?: Validation.Blueprints;
   validationMapErrorsFn?: Validation.MapErrorsFn;
   validateOnSubmit?: boolean;
@@ -44,7 +53,11 @@ export function getAbpSharedUtilityProviders(
       deps: [ErrorHandler],
       useFactory: () => () => undefined,
     },
-    provideAbpUtils(),
+    provideAbpUtils({
+      notifyService: options.notifyService,
+      messageService: options.messageService,
+      uiService: options.uiService,
+    }),
     {
       provide: VALIDATION_VALIDATE_ON_SUBMIT,
       useValue: options.validateOnSubmit ?? true,
