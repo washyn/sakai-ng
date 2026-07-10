@@ -2,8 +2,9 @@ import { AbpAuthResponse, ConfigStateService, IAuthService, LoginParams } from '
 import { HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Params, Router } from '@angular/router';
-import { Observable, delay, tap } from 'rxjs';
+import { Observable, delay, of, tap } from 'rxjs';
 import { AccountService, LoginOutput } from 'src/app/proxy/unaj/payment/public/controllers';
+import { JWT_LOCALSTORAGE_KEY } from './constants';
 
 @Injectable({
   providedIn: 'root',
@@ -20,14 +21,19 @@ export class CustomAuthService implements IAuthService {
   init(): Promise<any> {
     return Promise.resolve();
   }
+  // shloud suscribe
   logout(queryParams?: Params): Observable<any> {
-    localStorage.removeItem('456');
+    localStorage.removeItem(JWT_LOCALSTORAGE_KEY);
     this.navigateToLogin();
-    return this.confState.refreshAppState();
+    this.confState.refreshAppState().subscribe();
+    return of({
+      result: true,
+    })
   }
   navigateToLogin(queryParams?: Params): void {
     this.router.navigate(['/auth']);
   }
+  // shloud suscribe
   login(params: LoginParams): Observable<any> {
     let res = this.accountService
       .postByModel({
@@ -36,14 +42,16 @@ export class CustomAuthService implements IAuthService {
       })
       .pipe(
         tap((res: LoginOutput) => {
-          localStorage.setItem('456', res.accessToken);
+          localStorage.setItem(JWT_LOCALSTORAGE_KEY, res.accessToken);
         }),
         tap((res: LoginOutput) => {
           this.confState.refreshAppState();
         }),
         delay(200)
-      );
-    return res;
+      ).subscribe();
+    return of({
+      result: true,
+    });
   }
   loginUsingGrant(grantType: string, parameters: object, headers?: HttpHeaders): Promise<AbpAuthResponse> {
     throw new Error('Method not implemented.');
@@ -55,7 +63,7 @@ export class CustomAuthService implements IAuthService {
     throw new Error('Method not implemented.');
   }
   getAccessToken(): string {
-    throw new Error('Method not implemented.');
+    return localStorage.getItem(JWT_LOCALSTORAGE_KEY);
   }
   refreshToken(): Promise<AbpAuthResponse> {
     throw new Error('Method not implemented.');
