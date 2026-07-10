@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { Component, inject, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, FormsModule, Validators, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { CheckboxModule } from 'primeng/checkbox';
@@ -11,7 +11,7 @@ import { AppFloatingConfigurator } from '../../layout/component/app.floatingconf
 @Component({
     selector: 'app-login',
     standalone: true,
-    imports: [ButtonModule, CheckboxModule, InputTextModule, PasswordModule, FormsModule, RouterModule, RippleModule, AppFloatingConfigurator],
+    imports: [ButtonModule, CheckboxModule, InputTextModule, PasswordModule, FormsModule, RouterModule, RippleModule, AppFloatingConfigurator, ReactiveFormsModule],
     template: `
         <app-floating-configurator />
         <div class="bg-surface-50 dark:bg-surface-950 flex items-center justify-center min-h-screen min-w-screen overflow-hidden">
@@ -39,34 +39,57 @@ import { AppFloatingConfigurator } from '../../layout/component/app.floatingconf
                             <div class="text-surface-900 dark:text-surface-0 text-3xl font-medium mb-4">Welcome to PrimeLand!</div>
                             <span class="text-muted-color font-medium">Sign in to continue</span>
                         </div>
-                        <div class="flex flex-col gap-4">
+                        <form [formGroup]="form" (ngSubmit)="login()" class="flex flex-col gap-4">
                             <div class="flex flex-col gap-2">
-                                <label for="name1" class="text-surface-900 dark:text-surface-0 text-xl font-medium">Name</label>
-                                <input pInputText id="email1" type="text" placeholder="Email address" [(ngModel)]="email" />
+                                <label for="name1" class="text-surface-900 dark:text-surface-0 text-xl font-medium">Username</label>
+                                <input pInputText formControlName="username" type="text" placeholder="Email address" />
                             </div>
                             <div class="flex flex-col gap-2">
-                                <label for="email1" class="text-surface-900 dark:text-surface-0 font-medium text-xl">Email</label>
-                                <p-password id="password1" [(ngModel)]="password" placeholder="Password" [toggleMask]="true" [fluid]="true" [feedback]="false"></p-password>
+                                <label for="email1" class="text-surface-900 dark:text-surface-0 font-medium text-xl">Password</label>
+                                <p-password formControlName="password"  placeholder="Password" [toggleMask]="true" [fluid]="true" [feedback]="false"></p-password>
                             </div>
                             <div class="flex items-center justify-between mt-2 mb-4 gap-8">
                                 <div class="flex items-center">
-                                    <p-checkbox [(ngModel)]="checked" id="rememberme1" binary class="mr-2"></p-checkbox>
+                                    <p-checkbox  binary class="mr-2" formControlName="rememberme"></p-checkbox>
                                     <label for="rememberme1">Remember me</label>
                                 </div>
                                 <span class="font-medium no-underline ml-2 text-right cursor-pointer text-primary">Forgot password?</span>
                             </div>
-                            <p-button label="Sign In" styleClass="w-full" routerLink="/"></p-button>
-                        </div>
+                            <p-button label="Sign In" styleClass="w-full" type="submit"></p-button>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
     `
 })
-export class Login {
-    email: string = '';
-
-    password: string = '';
-
-    checked: boolean = false;
+export class Login implements OnInit {
+    ngOnInit(): void {
+        this.form = this.formBuilder.group<{
+            username: FormControl<string>;
+            password: FormControl<string>;
+            rememberme: FormControl<boolean>;
+        }>({
+            username: new FormControl('', Validators.required),
+            password: new FormControl('', Validators.required),
+            rememberme: new FormControl(false),
+        });
+    }
+    form: FormGroup;
+    formBuilder: FormBuilder = inject(FormBuilder);
+    login() {
+        console.log(this.form.value);
+        // this.authService
+        //     .login({
+        //         password: this.formGroup.value.password,
+        //         username: this.formGroup.value.userName,
+        //     })
+        //     .subscribe((res: LoginOutput) => {
+        //         this.router.navigateByUrl('/backoffice');
+        //     });
+        // username: string;
+        // password: string;
+        // rememberMe ?: boolean;
+        // redirectUrl ?: string;
+    }
 }

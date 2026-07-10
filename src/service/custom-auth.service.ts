@@ -19,7 +19,7 @@ export class JwtAuthService implements IAuthService {
     return this.confState.getAll().currentUser.isAuthenticated;
   }
   init(): Promise<any> {
-    return Promise.resolve();
+    return Promise.resolve(undefined);
   }
   // shloud suscribe
   logout(queryParams?: Params): Observable<any> {
@@ -57,15 +57,15 @@ export class JwtAuthService implements IAuthService {
     throw new Error('Method not implemented.');
   }
   getAccessTokenExpiration(): number {
-    throw new Error('Method not implemented.');
+    return 0;
   }
   getRefreshToken(): string {
-    throw new Error('Method not implemented.');
+    return "";
   }
   getAccessToken(): string {
     return localStorage.getItem(JWT_LOCALSTORAGE_KEY);
   }
   refreshToken(): Promise<AbpAuthResponse> {
-    throw new Error('Method not implemented.');
+    return Promise.resolve(undefined);
   }
 }
