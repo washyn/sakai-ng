@@ -1,2 +1,2 @@
-import * as Payment from './payment';
-export { Payment };
+import * as WebApp from './web-app';
+export { WebApp };

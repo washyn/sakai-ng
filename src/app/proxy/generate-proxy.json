@@ -343,27 +343,53 @@
       "rootPath": "app",
       "remoteServiceName": "Default",
       "controllers": {
-        "Unaj.Payment.Public.Controllers.AccountController": {
+        "AKDEMIC.IMPERSONATION.Controllers.UsersController": {
+          "controllerName": "Users",
+          "controllerGroupName": null,
+          "isRemoteService": false,
+          "isIntegrationService": false,
+          "apiVersion": null,
+          "type": "AKDEMIC.IMPERSONATION.Controllers.UsersController",
+          "interfaces": [],
+          "actions": {
+            "Get": {
+              "uniqueName": "Get",
+              "name": "Get",
+              "httpMethod": "GET",
+              "url": "api/users",
+              "supportedVersions": [],
+              "parametersOnMethod": [],
+              "parameters": [],
+              "returnValue": {
+                "type": "System.Collections.Generic.List<AKDEMIC.REPOSITORY.Repositories.Common.Select2ViewData>",
+                "typeSimple": "[AKDEMIC.REPOSITORY.Repositories.Common.Select2ViewData]"
+              },
+              "allowAnonymous": false,
+              "implementFrom": "AKDEMIC.IMPERSONATION.Controllers.UsersController"
+            }
+          }
+        },
+        "Unaj.WebApp.Controllers.AccountController": {
           "controllerName": "Account",
           "controllerGroupName": null,
           "isRemoteService": false,
           "isIntegrationService": false,
           "apiVersion": null,
-          "type": "Unaj.Payment.Public.Controllers.AccountController",
+          "type": "Unaj.WebApp.Controllers.AccountController",
           "interfaces": [],
           "actions": {
-            "PostByModel": {
-              "uniqueName": "PostByModel",
-              "name": "Post",
+            "SiginByModel": {
+              "uniqueName": "SiginByModel",
+              "name": "Sigin",
               "httpMethod": "POST",
-              "url": "api/app/account/login",
+              "url": "api/app/account",
               "supportedVersions": [],
               "parametersOnMethod": [
                 {
                   "name": "model",
-                  "typeAsString": "Unaj.Payment.Public.Controllers.LoginInput, WebApp",
-                  "type": "Unaj.Payment.Public.Controllers.LoginInput",
-                  "typeSimple": "Unaj.Payment.Public.Controllers.LoginInput",
+                  "typeAsString": "Unaj.WebApp.Controllers.LoginInput, Unaj.WebApp",
+                  "type": "Unaj.WebApp.Controllers.LoginInput",
+                  "typeSimple": "Unaj.WebApp.Controllers.LoginInput",
                   "isOptional": false,
                   "defaultValue": null
                 }
@@ -373,8 +399,8 @@
                   "nameOnMethod": "model",
                   "name": "model",
                   "jsonName": null,
-                  "type": "Unaj.Payment.Public.Controllers.LoginInput",
-                  "typeSimple": "Unaj.Payment.Public.Controllers.LoginInput",
+                  "type": "Unaj.WebApp.Controllers.LoginInput",
+                  "typeSimple": "Unaj.WebApp.Controllers.LoginInput",
                   "isOptional": false,
                   "defaultValue": null,
                   "constraintTypes": null,
@@ -383,21 +409,58 @@
                 }
               ],
               "returnValue": {
-                "type": "Unaj.Payment.Public.Controllers.LoginOutput",
-                "typeSimple": "Unaj.Payment.Public.Controllers.LoginOutput"
+                "type": "Unaj.WebApp.Controllers.LoginOutput",
+                "typeSimple": "Unaj.WebApp.Controllers.LoginOutput"
               },
-              "allowAnonymous": true,
-              "implementFrom": "Unaj.Payment.Public.Controllers.AccountController"
+              "allowAnonymous": null,
+              "implementFrom": "Unaj.WebApp.Controllers.AccountController"
+            },
+            "SignoutByModel": {
+              "uniqueName": "SignoutByModel",
+              "name": "Signout",
+              "httpMethod": "POST",
+              "url": "api/app/account/logout",
+              "supportedVersions": [],
+              "parametersOnMethod": [
+                {
+                  "name": "model",
+                  "typeAsString": "Unaj.WebApp.Controllers.LoginOutput, Unaj.WebApp",
+                  "type": "Unaj.WebApp.Controllers.LoginOutput",
+                  "typeSimple": "Unaj.WebApp.Controllers.LoginOutput",
+                  "isOptional": false,
+                  "defaultValue": null
+                }
+              ],
+              "parameters": [
+                {
+                  "nameOnMethod": "model",
+                  "name": "model",
+                  "jsonName": null,
+                  "type": "Unaj.WebApp.Controllers.LoginOutput",
+                  "typeSimple": "Unaj.WebApp.Controllers.LoginOutput",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "Body",
+                  "descriptorName": ""
+                }
+              ],
+              "returnValue": {
+                "type": "System.Void",
+                "typeSimple": "System.Void"
+              },
+              "allowAnonymous": false,
+              "implementFrom": "Unaj.WebApp.Controllers.AccountController"
             }
           }
         },
-        "WebApp.Controllers.ErrorSampleController": {
+        "Unaj.WebApp.Controllers.ErrorSampleController": {
           "controllerName": "ErrorSample",
           "controllerGroupName": "ErrorSample",
           "isRemoteService": true,
           "isIntegrationService": false,
           "apiVersion": null,
-          "type": "WebApp.Controllers.ErrorSampleController",
+          "type": "Unaj.WebApp.Controllers.ErrorSampleController",
           "interfaces": [],
           "actions": {
             "Error500": {
@@ -413,7 +476,7 @@
                 "typeSimple": "System.Void"
               },
               "allowAnonymous": null,
-              "implementFrom": "WebApp.Controllers.ErrorSampleController"
+              "implementFrom": "Unaj.WebApp.Controllers.ErrorSampleController"
             },
             "Error401": {
               "uniqueName": "Error401",
@@ -428,7 +491,7 @@
                 "typeSimple": "System.Void"
               },
               "allowAnonymous": null,
-              "implementFrom": "WebApp.Controllers.ErrorSampleController"
+              "implementFrom": "Unaj.WebApp.Controllers.ErrorSampleController"
             },
             "Error403": {
               "uniqueName": "Error403",
@@ -443,7 +506,7 @@
                 "typeSimple": "System.Void"
               },
               "allowAnonymous": null,
-              "implementFrom": "WebApp.Controllers.ErrorSampleController"
+              "implementFrom": "Unaj.WebApp.Controllers.ErrorSampleController"
             },
             "Error40XXXByModelSample": {
               "uniqueName": "Error40XXXByModelSample",
@@ -454,9 +517,9 @@
               "parametersOnMethod": [
                 {
                   "name": "modelSample",
-                  "typeAsString": "WebApp.Controllers.ModelSample, WebApp",
-                  "type": "WebApp.Controllers.ModelSample",
-                  "typeSimple": "WebApp.Controllers.ModelSample",
+                  "typeAsString": "Unaj.WebApp.Controllers.ModelSample, Unaj.WebApp",
+                  "type": "Unaj.WebApp.Controllers.ModelSample",
+                  "typeSimple": "Unaj.WebApp.Controllers.ModelSample",
                   "isOptional": false,
                   "defaultValue": null
                 }
@@ -492,7 +555,7 @@
                 "typeSimple": "System.Void"
               },
               "allowAnonymous": null,
-              "implementFrom": "WebApp.Controllers.ErrorSampleController"
+              "implementFrom": "Unaj.WebApp.Controllers.ErrorSampleController"
             },
             "Error404": {
               "uniqueName": "Error404",
@@ -507,7 +570,7 @@
                 "typeSimple": "System.Void"
               },
               "allowAnonymous": null,
-              "implementFrom": "WebApp.Controllers.ErrorSampleController"
+              "implementFrom": "Unaj.WebApp.Controllers.ErrorSampleController"
             },
             "ErrorBusinessException": {
               "uniqueName": "ErrorBusinessException",
@@ -522,7 +585,7 @@
                 "typeSimple": "System.Void"
               },
               "allowAnonymous": null,
-              "implementFrom": "WebApp.Controllers.ErrorSampleController"
+              "implementFrom": "Unaj.WebApp.Controllers.ErrorSampleController"
             },
             "LargeRequest": {
               "uniqueName": "LargeRequest",
@@ -537,7 +600,7 @@
                 "typeSimple": "object"
               },
               "allowAnonymous": null,
-              "implementFrom": "WebApp.Controllers.ErrorSampleController"
+              "implementFrom": "Unaj.WebApp.Controllers.ErrorSampleController"
             },
             "LargeRequestSecondExample": {
               "uniqueName": "LargeRequestSecondExample",
@@ -552,7 +615,7 @@
                 "typeSimple": "object"
               },
               "allowAnonymous": null,
-              "implementFrom": "WebApp.Controllers.ErrorSampleController"
+              "implementFrom": "Unaj.WebApp.Controllers.ErrorSampleController"
             },
             "RequireAuth": {
               "uniqueName": "RequireAuth",
@@ -567,7 +630,7 @@
                 "typeSimple": "System.Void"
               },
               "allowAnonymous": false,
-              "implementFrom": "WebApp.Controllers.ErrorSampleController"
+              "implementFrom": "Unaj.WebApp.Controllers.ErrorSampleController"
             },
             "Error400": {
               "uniqueName": "Error400",
@@ -582,7 +645,7 @@
                 "typeSimple": "System.Void"
               },
               "allowAnonymous": null,
-              "implementFrom": "WebApp.Controllers.ErrorSampleController"
+              "implementFrom": "Unaj.WebApp.Controllers.ErrorSampleController"
             },
             "Error501": {
               "uniqueName": "Error501",
@@ -597,7 +660,33 @@
                 "typeSimple": "System.Void"
               },
               "allowAnonymous": null,
-              "implementFrom": "WebApp.Controllers.ErrorSampleController"
+              "implementFrom": "Unaj.WebApp.Controllers.ErrorSampleController"
+            }
+          }
+        },
+        "Unaj.WebApp.Controllers.ManifestController": {
+          "controllerName": "Manifest",
+          "controllerGroupName": null,
+          "isRemoteService": false,
+          "isIntegrationService": false,
+          "apiVersion": null,
+          "type": "Unaj.WebApp.Controllers.ManifestController",
+          "interfaces": [],
+          "actions": {
+            "Get": {
+              "uniqueName": "Get",
+              "name": "Get",
+              "httpMethod": "GET",
+              "url": "api/manifest",
+              "supportedVersions": [],
+              "parametersOnMethod": [],
+              "parameters": [],
+              "returnValue": {
+                "type": "AKDEMIC.CORE.Common.ManifestViewModel",
+                "typeSimple": "AKDEMIC.CORE.Common.ManifestViewModel"
+              },
+              "allowAnonymous": null,
+              "implementFrom": "Unaj.WebApp.Controllers.ManifestController"
             }
           }
         }
@@ -605,7 +694,97 @@
     }
   },
   "types": {
-    "Unaj.Payment.Public.Controllers.LoginInput": {
+    "AKDEMIC.CORE.Common.ManifestViewModel": {
+      "baseType": null,
+      "isEnum": false,
+      "enumNames": null,
+      "enumValues": null,
+      "genericArguments": null,
+      "properties": [
+        {
+          "name": "Application",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "Version",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "Environment",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "BuildDate",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        }
+      ]
+    },
+    "AKDEMIC.REPOSITORY.Repositories.Common.Select2ViewData": {
+      "baseType": null,
+      "isEnum": false,
+      "enumNames": null,
+      "enumValues": null,
+      "genericArguments": null,
+      "properties": [
+        {
+          "name": "Id",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "Text",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        }
+      ]
+    },
+    "Unaj.WebApp.Controllers.LoginInput": {
       "baseType": null,
       "isEnum": false,
       "enumNames": null,
@@ -638,7 +817,7 @@
         }
       ]
     },
-    "Unaj.Payment.Public.Controllers.LoginOutput": {
+    "Unaj.WebApp.Controllers.LoginOutput": {
       "baseType": null,
       "isEnum": false,
       "enumNames": null,
@@ -651,6 +830,39 @@
           "type": "System.String",
           "typeSimple": "string",
           "isRequired": true,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        }
+      ]
+    },
+    "Unaj.WebApp.Controllers.ModelSample": {
+      "baseType": null,
+      "isEnum": false,
+      "enumNames": null,
+      "enumValues": null,
+      "genericArguments": null,
+      "properties": [
+        {
+          "name": "TestValue",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "SecondValue",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false,
           "minLength": null,
           "maxLength": null,
           "minimum": null,
@@ -3351,39 +3563,6 @@
           "jsonName": null,
           "type": "T",
           "typeSimple": "T",
-          "isRequired": false,
-          "minLength": null,
-          "maxLength": null,
-          "minimum": null,
-          "maximum": null,
-          "regex": null
-        }
-      ]
-    },
-    "WebApp.Controllers.ModelSample": {
-      "baseType": null,
-      "isEnum": false,
-      "enumNames": null,
-      "enumValues": null,
-      "genericArguments": null,
-      "properties": [
-        {
-          "name": "TestValue",
-          "jsonName": null,
-          "type": "System.String",
-          "typeSimple": "string",
-          "isRequired": false,
-          "minLength": null,
-          "maxLength": null,
-          "minimum": null,
-          "maximum": null,
-          "regex": null
-        },
-        {
-          "name": "SecondValue",
-          "jsonName": null,
-          "type": "System.String",
-          "typeSimple": "string",
           "isRequired": false,
           "minLength": null,
           "maxLength": null,

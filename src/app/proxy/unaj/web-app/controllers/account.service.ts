@@ -10,10 +10,19 @@ export class AccountService {
   apiName = 'Default';
   
 
-  postByModel = (model: LoginInput, config?: Partial<Rest.Config>) =>
+  siginByModel = (model: LoginInput, config?: Partial<Rest.Config>) =>
     this.restService.request<any, LoginOutput>({
       method: 'POST',
-      url: '/api/app/account/login',
+      url: '/api/app/account',
+      body: model,
+    },
+    { apiName: this.apiName,...config });
+  
+
+  signoutByModel = (model: LoginOutput, config?: Partial<Rest.Config>) =>
+    this.restService.request<any, void>({
+      method: 'POST',
+      url: '/api/app/account/logout',
       body: model,
     },
     { apiName: this.apiName,...config });

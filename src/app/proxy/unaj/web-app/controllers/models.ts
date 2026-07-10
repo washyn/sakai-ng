@@ -7,3 +7,8 @@ export interface LoginInput {
 export interface LoginOutput {
   accessToken: string;
 }
+
+export interface ModelSample {
+  testValue?: string;
+  secondValue?: string;
+}

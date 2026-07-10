@@ -1,3 +1,3 @@
+import * as Akdemic from './akdemic';
 import * as Unaj from './unaj';
-import * as WebApp from './web-app';
-export { Unaj, WebApp };
+export { Akdemic, Unaj };
