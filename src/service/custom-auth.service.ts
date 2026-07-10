@@ -9,9 +9,9 @@ import { JWT_LOCALSTORAGE_KEY } from './constants';
 @Injectable({
   providedIn: 'root',
 })
-export class CustomAuthService implements IAuthService {
+export class JwtAuthService implements IAuthService {
   constructor(public confState: ConfigStateService, public router: Router, public accountService: AccountService) { }
-  oidc: boolean;
+  oidc: boolean = false;
   get isInternalAuth(): boolean {
     throw new Error('Method not implemented.');
   }

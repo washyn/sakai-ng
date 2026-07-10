@@ -7,11 +7,11 @@ import { Observable, delay, tap } from 'rxjs';
 @Injectable({
     providedIn: 'root'
 })
-export class CustomAuthService implements IAuthService {
+export class FakeAuthService implements IAuthService {
     constructor(
         public confState: ConfigStateService,
         public router: Router
-    ) {}
+    ) { }
     oidc: boolean = false;
 
     get isInternalAuth(): boolean {
