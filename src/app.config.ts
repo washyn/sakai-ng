@@ -1,7 +1,7 @@
 import { provideHttpClient, withFetch, withInterceptorsFromDi } from '@angular/common/http';
 import { ApplicationConfig } from '@angular/core';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { provideRouter, withEnabledBlockingInitialNavigation, withInMemoryScrolling } from '@angular/router';
+import { provideRouter, withComponentInputBinding, withEnabledBlockingInitialNavigation, withInMemoryScrolling } from '@angular/router';
 import Aura from '@primeuix/themes/aura';
 import { providePrimeNG } from 'primeng/config';
 import { ConfirmationService, MessageService } from 'primeng/api';
@@ -38,7 +38,9 @@ export const appConfig: ApplicationConfig = {
             // validationTargetSelector: '.flex.flex-col.gap-2',// customizar selector de validación wraper
             validationTargetSelector: null,// en abp usa form-group que no existe, y en el oficial tambien, pero tambien en el repo se pone como nulo para test
             validationErrorComponent: PrimeValidationErrorComponent,
+            registerHttpInterceptor: false, // TODO: add custom with jwt token
         }),
+        provideRouter([], withComponentInputBinding()),
         MessageService,
         ConfirmationService,
         {
