@@ -1,12 +1,13 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormsModule, Validators, ReactiveFormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { CheckboxModule } from 'primeng/checkbox';
 import { InputTextModule } from 'primeng/inputtext';
 import { PasswordModule } from 'primeng/password';
 import { RippleModule } from 'primeng/ripple';
 import { AppFloatingConfigurator } from '../../layout/component/app.floatingconfigurator';
+import { AuthService } from '@abp/ng.core';
 
 @Component({
     selector: 'app-login',
@@ -46,11 +47,11 @@ import { AppFloatingConfigurator } from '../../layout/component/app.floatingconf
                             </div>
                             <div class="flex flex-col gap-2">
                                 <label for="email1" class="text-surface-900 dark:text-surface-0 font-medium text-xl">Password</label>
-                                <p-password formControlName="password"  placeholder="Password" [toggleMask]="true" [fluid]="true" [feedback]="false"></p-password>
+                                <p-password formControlName="password" placeholder="Password" [toggleMask]="true" [fluid]="true" [feedback]="false"></p-password>
                             </div>
                             <div class="flex items-center justify-between mt-2 mb-4 gap-8">
                                 <div class="flex items-center">
-                                    <p-checkbox  binary class="mr-2" formControlName="rememberme"></p-checkbox>
+                                    <p-checkbox binary class="mr-2" formControlName="rememberme"></p-checkbox>
                                     <label for="rememberme1">Remember me</label>
                                 </div>
                                 <span class="font-medium no-underline ml-2 text-right cursor-pointer text-primary">Forgot password?</span>
@@ -72,21 +73,22 @@ export class Login implements OnInit {
         }>({
             username: new FormControl('', Validators.required),
             password: new FormControl('', Validators.required),
-            rememberme: new FormControl(false),
+            rememberme: new FormControl(false)
         });
     }
     form: FormGroup;
     formBuilder: FormBuilder = inject(FormBuilder);
+    authService = inject(AuthService);
+    router = inject(Router);
     login() {
         console.log(this.form.value);
-        // this.authService
-        //     .login({
-        //         password: this.formGroup.value.password,
-        //         username: this.formGroup.value.userName,
-        //     })
-        //     .subscribe((res: LoginOutput) => {
-        //         this.router.navigateByUrl('/backoffice');
-        //     });
+        this.authService
+            .login({
+                ...this.form.value
+            })
+            .subscribe((res) => {
+                this.router.navigateByUrl('/');
+            });
         // username: string;
         // password: string;
         // rememberMe ?: boolean;

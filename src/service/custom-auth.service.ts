@@ -25,7 +25,7 @@ export class JwtAuthService implements IAuthService {
     init(): Promise<any> {
         return Promise.resolve(undefined);
     }
-    // shloud suscribe
+    // shloud suscribe, revisar donde se llama a esto y suscribir corregir
     logout(queryParams?: Params): Observable<any> {
         localStorage.removeItem(JWT_LOCALSTORAGE_KEY);
         this.navigateToLogin();
@@ -37,7 +37,7 @@ export class JwtAuthService implements IAuthService {
     navigateToLogin(queryParams?: Params): void {
         this.router.navigate(['/auth']);
     }
-    // shloud suscribe
+
     login(params: LoginParams): Observable<any> {
         let res = this.accountService
             .siginByModel({
@@ -52,11 +52,8 @@ export class JwtAuthService implements IAuthService {
                     this.confState.refreshAppState();
                 }),
                 delay(200)
-            )
-            .subscribe();
-        return of({
-            result: true
-        });
+            );
+        return res;
     }
     loginUsingGrant(grantType: string, parameters: object, headers?: HttpHeaders): Promise<AbpAuthResponse> {
         throw new Error('Method not implemented.');

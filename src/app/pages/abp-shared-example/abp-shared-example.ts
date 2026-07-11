@@ -7,8 +7,9 @@ import { NgxValidateCoreModule } from '@ngx-validate/core';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { AbpUtilService } from '@/abp-shared';
-import { ErrorSampleService } from '@/proxy/web-app/controllers/error-sample.service';
+
 import { LangComponent } from './lang-component';
+import { ErrorSampleService } from '@/proxy/unaj/web-app/controllers';
 
 @Component({
     selector: 'app-abp-shared-example',
