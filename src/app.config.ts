@@ -39,7 +39,7 @@ export const appConfig: ApplicationConfig = {
             // validationTargetSelector: '.flex.flex-col.gap-2',// customizar selector de validación wraper
             validationTargetSelector: null, // en abp usa form-group que no existe, y en el oficial tambien, pero tambien en el repo se pone como nulo para test
             validationErrorComponent: PrimeValidationErrorComponent,
-            registerHttpInterceptor: false // TODO: add custom with jwt token
+            registerHttpInterceptor: false
         }),
         provideRouter([], withComponentInputBinding()),
         {
@@ -55,3 +55,7 @@ export const appConfig: ApplicationConfig = {
         }
     ]
 };
+// DONE: add logout of core auth service
+// TODO: add guard to redirect to login page
+// TODO: add guard for main pages
+// TODO: add role service and in angular POC proyect first

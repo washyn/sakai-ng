@@ -14,7 +14,7 @@ export class JwtAuthService implements IAuthService {
         public confState: ConfigStateService,
         public router: Router,
         public accountService: AccountService
-    ) {}
+    ) { }
     oidc: boolean = false;
     get isInternalAuth(): boolean {
         throw new Error('Method not implemented.');
@@ -25,17 +25,15 @@ export class JwtAuthService implements IAuthService {
     init(): Promise<any> {
         return Promise.resolve(undefined);
     }
-    // shloud suscribe, revisar donde se llama a esto y suscribir corregir
+
     logout(queryParams?: Params): Observable<any> {
         localStorage.removeItem(JWT_LOCALSTORAGE_KEY);
-        this.navigateToLogin();
-        this.confState.refreshAppState().subscribe();
-        return of({
-            result: true
-        });
+        let res = this.confState.refreshAppState();
+        return res;
     }
+
     navigateToLogin(queryParams?: Params): void {
-        this.router.navigate(['/auth']);
+        this.router.navigate(['/auth/login']);
     }
 
     login(params: LoginParams): Observable<any> {

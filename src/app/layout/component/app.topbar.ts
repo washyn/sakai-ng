@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { StyleClassModule } from 'primeng/styleclass';
 import { AppConfigurator } from './app.configurator';
 import { LayoutService } from '../service/layout.service';
+import { AuthService } from '@abp/ng.core';
 
 @Component({
     selector: 'app-topbar',
@@ -76,6 +77,10 @@ import { LayoutService } from '../service/layout.service';
                         <i class="pi pi-user"></i>
                         <span>Profile</span>
                     </button>
+                    <button type="button" class="layout-topbar-action" (click)="logout()">
+                        <i class="pi pi-user"></i>
+                        <span>Close sesion</span>
+                    </button>
                 </div>
             </div>
         </div>
@@ -84,9 +89,16 @@ import { LayoutService } from '../service/layout.service';
 export class AppTopbar {
     items!: MenuItem[];
 
-    constructor(public layoutService: LayoutService) {}
+    authService = inject(AuthService);
+    constructor(public layoutService: LayoutService) { }
 
     toggleDarkMode() {
         this.layoutService.layoutConfig.update((state) => ({ ...state, darkTheme: !state.darkTheme }));
+    }
+
+    logout() {
+        this.authService.logout().subscribe(() => {
+            this.authService.navigateToLogin();
+        });
     }
 }
